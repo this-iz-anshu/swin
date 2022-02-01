@@ -1,9 +1,9 @@
 const express = require('express');
 const user = require('./models/user.js');
 
-const alert = require('alert');
+// const alert = require('alert');
 const app = express();
-const swal= require ('sweetAlert');
+// const swal= require ('sweetAlert');
 
 
 
@@ -92,7 +92,7 @@ const welcome = async (req, res) => {
     else if(userData[0].emai == email & userData[0].password == password)
     {
         var name = userData[0].name;
-         await alert("you are successfuly loged In ");
+        //  await alert("you are successfuly loged In ");
       
        
         res.render('afterLogin', { name });
