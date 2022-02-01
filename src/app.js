@@ -1,6 +1,6 @@
  const express = require('express');
 
-// require('./db/mongoose.js');
+require('./db/mongoose.js');
 
 const path = require('path');
 const app = express();
