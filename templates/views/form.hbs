@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>form update</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </head>
+    <body>
+<div class="container">
+  <h1 class="display-1"><u>Update User Details</u></h1>
+
+  
+<form method="post" action="/updatedForm"  >
+
+ <div class="form-group">
+    <label for="id" class="display-4">Unique Id</label>
+    <input type="text" class="form-control" id="id" name="id" aria-describedby="emailHelp" value="{{_id}}">
+    <small id="id" class="form-text text-muted">your unique user id.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1"  class="display-4">Email address</label>
+    <input type="email" class="form-control" name="emai" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder={{email}}>
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="name"  class="display-4">Name</label>
+    <input type="text" class="form-control" name="name" id="name" placeholder={{name}}>
+  </div>
+  
+  <input class="btn btn-primary" type="submit" value="submit">
+</form>
+</div>
+    </body>
+</html>
