@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/loginstyle.css">
+    <style>
+        body {
+            background-image: url('path-to-your-background-image.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden; /* Ensure background image does not overflow */
+        }
+        .login-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            max-width: 400px;
+            width: 100%;
+            animation: slide-up 0.5s ease-out; /* Slide-up animation */
+        }
+        @keyframes slide-up {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .login-container h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #333;
+        }
+        .btn-google {
+            background-color: #DB4437;
+            color: white;
+            border: none;
+        }
+        .btn-google:hover {
+            background-color: #c5372d;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login to Your Account</h2>
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="psw" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+            <p class="text-center mt-3 mb-0">Or login with</p>
+            <div class="text-center">
+                <a href="#" class="btn btn-google btn-block mt-2">
+                    <i class="fab fa-google"></i> Login with Google
+                </a>
+            </div>
+        </form>
+        <div class="text-center mt-3">
+            <p>Don't have an account? <a href="/common/register.html">Sign Up</a></p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>

@@ -21,13 +21,6 @@ var publicDirectoryFolder = path.join(__dirname, '../public');
 var viewPath = path.join(__dirname, '../templates/views')
 var partialPath=path.join(__dirname,'../templates/partials')
 
-
-
-
-
-
-
-
 //set up static directory to serve
 app.use(express.static(publicDirectoryFolder));
 app.use(router);

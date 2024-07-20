@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swimming Ware | E-commerce Website</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="img/swimfine.ico" />
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/b5f4ebf77f.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/mainStyles.css">
+
+    <script src="js/mainFunctions.js"></script>
+    
+    <!-- JS plugin SweetAlert  -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('/user-info')
+                .then(response => response.json())
+                .then(user => {
+                    if (user.loggedIn) {
+                        document.querySelector('.account-access').style.display = 'none';
+                        document.querySelector('.account-details').style.display = 'block';
+                        document.querySelector('.account-name').innerText = user.name;
+                    } else {
+                        document.querySelector('.account-access').style.display = 'block';
+                        document.querySelector('.account-details').style.display = 'none';
+                    }
+                })
+                .catch(error => console.error('Error fetching user info:', error));
+        });
+
+        
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="navbar">
+            <!-- Logo container -->
+            <div class="logo-container">
+                <a href="/">
+                    <h1>SWIM<span>FINE</span></h1>
+                </a>
+            </div>
+            
+            <!-- Links container -->
+            <nav class="navigation">
+                <ul>
+                    <li><a href="#product-collection"> Home </a></li>
+                    <li><a href="#latest-products"> Products </a></li>
+                    <li><a href="#"> About </a></li>
+                </ul>
+            </nav>
+
+            <!-- Account access -->
+            <div class="account-access">
+               
+                <% if (user) { %>
+                    <p class="account-section">Welcome, <%= user.name %>!</p>
+                    <form action="/logout" method="GET">
+                        <button type="submit">Logout</button>
+                    </form>
+                    <!-- You can add more user details here -->
+                <% } else { %>
+                    <a href="common/login.html" class="login">Log In</a>
+                    <!-- Display the sign-up button only if user is not logged in -->
+                    <a href="common/register.html" id="signupButton">Sign Up</a>
+                <% } %>
+
+             
+                <a href="common/cart.html" id="view-cart">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+            </div>
+            
+            <!-- Account details -->
+            <div class="account-details" style="display: none;">
+                <a href="common/profile.html" title="My Account" class="account-section">
+                    <span class="account-icon"><i class="far fa-user-circle"></i></span>
+                    <span class="account-name"></span>
+                </a>
+                
+                <a href="common/cart.html" id="view-cart">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+            </div>
+            
+            <i id="menu-bttn" class="fas fa-bars fa-1x"></i>    
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Summer is near!</h1>
+                <h4><span>50%</span> SALE OFF</h4>
+            </div>
+            <button id="shop-now" onclick="location='common/products.html'">shop now</button>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main>
+        <!-- Product Collection -->
+        <section id="product-collection" class="product-collections">
+            <!-- Male Swimwear -->
+            <div class="collection-card">
+                <img src="img/sexy-model-1.png" alt="">
+                <div class="collection-card-text">
+                    <h3>Men</h3>
+                    <h2>Swimsuits</h2>
+                    <a href="common/products.html">View Collection</a>
+                </div>
+            </div>
+
+            <!-- Female Swimwear -->
+            <div class="collection-card">
+                <img src="img/sexy-model-2.png" alt="">
+                <div class="collection-card-text">
+                    <h3>Women</h3>
+                    <h2>Swimsuits</h2>
+                    <a href="common/products.html">View Collection</a>
+                </div>
+            </div>
+            
+        </section>
+
+        <!-- Featured Content -->
+        <section class="featured-products">
+            <!-- Featured Title -->
+            <div class="section-title">
+                <h1>Featured Products</h1>
+                <a href="common/products.html">View All</a>
+            </div>
+
+            <!-- Featured Products -->
+            <div class="featured-content">
+                <!-- Product 1 -->
+                <div class="featured-card">
+                    <div class="card-label"><span>NEW</span></div>
+                    <a href="#">
+                        <!-- Card header -->
+                        <div class="feature-card-header">
+                            <!-- Image -->
+                            <img src="img/blue-pants.webp" alt="">
+                        </div>
+                        
+                        <div class="feature-card-footer">
+                            <div class="product-name">
+                                <h2>Blue Pants</h2>
+                            </div>
+                            <span style="color: Mediumslateblue; font-size: 14px;">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half"></i>
+                            </span>
+                            <div class="price">
+                                <h3>$25.40</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="featured-card">
+                    <div class="card-label"><span>NEW</span></div>
+                    <a href="#">
+                        <!-- Card header -->
+                        <div class="feature-card-header">
+                            <!-- Image -->
+                            <img src="img/allover-swimdress-black-jewel-pink-ecstatic-pink-splash.webp" alt="">
+                        </div>
+                        
+                        <div class="feature-card-footer">
+                            <div class="product-name">
+                                <h2>Swimdress Black/Pink</h2>
+                            </div>
+                            <span style="color: Mediumslateblue; font-size: 14px;">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half"></i>
+                            </span>
+                            <div class="price">
+                                <h3>$23.20</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+
+                <!-- Product 3 -->
+                <div class="featured-card">
+                    <div class="card-label"><span>NEW</span></div>
+                    <a href="#">
+                        <!-- Card header -->
+                        <div class="feature-card-header">
+                            <!-- Image -->
+                            <img src="img/brigitte-v-cut-swimsuit-ultramarine.webp" alt="">
+                        </div>
+                        
+                        <div class="feature-card-footer">
+                            <div class="product-name">
+                                <h2>Brigitte V Cut Swimsuit</h2>
+                            </div>
+                            <span style="color: Mediumslateblue; font-size: 14px;">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half"></i>
+                            </span>
+                            <div class="price">
+                                <h3>$28.80</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+
+                <!-- Product 4 -->
+                <div class="featured-card">
+                    <div class="card-label"><span>NEW</span></div>
+                    <a href="#">
+                        <!-- Card header -->
+                        <div class="feature-card-header">
+                            <!-- Image -->
+                            <img src="img/gala-logo-aquashort-black-lava-red.webp" alt="">
+                        </div>
+                        
+                        <div class="feature-card-footer">
+                            <div class="product-name">
+                                <h2>Aquashort Black Lava Red</h2>
+                            </div>
+                            <span style="color: Mediumslateblue; font-size: 14px;">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half"></i>
+                            </span>
+                            <div class="price">
+                                <h3>$18.74</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+              
+            </div>
+        </section>
+
+        <!-- Offer Section -->
+        <section class="offer-section">
+            <div class="offer-content">
+                <h2 class="offer-title">Special Offer</h2>
+                <p class="offer-description">
+                    Limited time offer: Get a free pair of swim goggles with every swimsuit purchase!
+                </p>
+                <button class="shop-button" onclick="location='common/products.html'">Shop Now</button>
+            </div>
+        </section>
+        
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <!-- Links section -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <!-- Social Media section -->
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            
+            <!-- Newsletter section -->
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to our newsletter for the latest updates and offers.</p>
+                <form>
+                    <input type="email" placeholder="Your Email">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,13 +1,6 @@
 $(document).ready(function(){
 
-    if(!user.isLogin){
-        swal("Sign In First!","Please sign in or sign up if you dont own an account","warning").then(function(){
-            if(window.history.length > 1)
-                window.history.back();  
-            else
-                (() => window.location = "../index.html")();
-        });
-    }
+   
 
     displayInfo();
 

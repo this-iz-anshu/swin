@@ -1,11 +1,17 @@
+// db/mongoose.js
 const mongoose = require('mongoose');
+require('dotenv').config(); // Load environment variables
 
+async function connectToDb() {
+  try {
+    await mongoose.connect(process.env.MONGO_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
+    console.log("Connected to MongoDB successfully!");
+  } catch (error) {
+    console.error('Error connecting to MongoDB:', error);
+  }
+}
 
-const url='mongodb://127.0.0.1:27017/customer'
-mongoose.connect(url, { useNewUrlParser: true }).then(() => {
-    console.log("connection successful");
-}).catch((err) => {
-    console.log(err);
-})
-
-
+module.exports = { connectToDb };
