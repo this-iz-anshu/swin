@@ -2,9 +2,9 @@
   "name": "src",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "router.js",
   "scripts": {
-    "start": "node src/app.js",
+    "start": "node src/router.js",
     "dev": "nodemon src/add.js"
   },
   "keywords": [],
