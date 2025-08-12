@@ -19,7 +19,7 @@ router.post('/signup', async (req, res) => {
     await newUser.save();
     req.session.userId = newUser._id;
     req.session.name = newUser.name;
-    res.redirect('/');
+    res.redirect('/profile');
   } catch (err) {
     console.error(err);
     res.status(500).send('Error signing up');

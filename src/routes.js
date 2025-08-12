@@ -8,6 +8,7 @@ const path = require('path');
 const User = require('./models/user');
 const app = express();
 
+
 // Load environment variables
 require('dotenv').config();
 
@@ -46,32 +47,32 @@ connectToDb().then(() => {
   // Route to handle signup
   app.post('/signup', async (req, res) => {
     const { name, email, psw } = req.body;
-
+  
     try {
-      // Check if user already exists
+      // 1. Check if the user already exists to prevent duplicates
       const existingUser = await User.findOne({ email });
-
       if (existingUser) {
         console.log('User already exists with this email');
         return res.status(400).send('User already exists with this email');
       }
-
-      // Create new user
+  
+      // 2. Create a new user document from request data
       const newUser = new User({ name, email, psw });
       await newUser.save();
       console.log('User registered successfully!');
-
-      // Initialize session after successful registration
-      req.session.userId = newUser._id; // Store user id in session
+  
+      // 3. Create a session to maintain login state for the new user
+      req.session.userId = newUser._id;
       req.session.name = newUser.name;
-      res.redirect('/'); // Redirect to profile page
-
+  
+      // 4. Redirect the user to the home or profile page
+      res.redirect('/profile');
+  
     } catch (error) {
       console.error('Error registering user:', error);
       res.status(500).send('Registration failed. Please try again.');
     }
   });
-
   // Route to handle login
   app.post('/login', async (req, res) => {
     const { email, psw } = req.body;
